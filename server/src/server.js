@@ -1,4 +1,3 @@
-import "express-async-error"
 import express from "express"
 import cors from "cors"
 import dotenv from "dotenv"
@@ -7,6 +6,8 @@ import mongoSanitize from "express-mongo-sanitize"
 import helmet from "helmet"
 import morgan from "morgan"
 import mongoose from "mongoose"
+import Router from "./routes/router.js"
+import { errorHandler } from "./middlewares/errorHandler.js"
 dotenv.config()
 
 if (process.env.NODE === "development") {
@@ -24,6 +25,8 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(mongoSanitize())
 app.use(helmet())
+app.use(Router)
+app.use(errorHandler)
 
 mongoose.connect(mongodbUrl).then(() => console.log("Connected to mongodb")).catch((error) => console.log("Connection error", error))
 app.listen(port, () => console.log(`Server running on port ${port}`))
