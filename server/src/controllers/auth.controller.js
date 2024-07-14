@@ -3,6 +3,7 @@ import asyncHandler from "express-async-handler"
 import { BadRequestError } from "../utils/customErrors.js"
 import { comparePassword } from "../utils/password.js"
 import { createToken } from "../utils/token.js"
+import { StatusCodes } from "http-status-codes"
 
 export const login = asyncHandler(async (req, res) => {
     const { email, password } = req.body
@@ -16,7 +17,12 @@ export const login = asyncHandler(async (req, res) => {
         httpOnly: true,
         secure: true
     })
-    res.status(201).json({
+    res.status(StatusCodes.ACCEPTED).json({
         message: "Login successfull"
     })
+})
+
+export const logout = asyncHandler(async (req, res) => {
+    res.clearCookie("token")
+    res.status(StatusCodes.ACCEPTED).json({ message: "Logout successfull" })
 })

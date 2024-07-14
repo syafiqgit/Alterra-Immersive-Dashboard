@@ -1,9 +1,10 @@
 import express from "express";
-import { login } from "../controllers/auth.controller.js";
+import { login, logout } from "../controllers/auth.controller.js";
 import { LoginValidation } from "../middlewares/auth.validation.js";
 
 const authRouter = express.Router()
 
-authRouter.use("/login", LoginValidation, login)
+authRouter.post("/login", LoginValidation, login)
+authRouter.get("/logout", logout)
 
 export default authRouter

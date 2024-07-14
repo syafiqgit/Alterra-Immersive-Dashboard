@@ -1,8 +1,8 @@
-import { UnauthenticatedError } from "../utils/customErrors";
-import { verifyToken } from "../utils/token";
+import { UnauthenticatedError } from "../utils/customErrors.js";
+import { verifyToken } from "../utils/token.js";
 
 export const authenticatedUser = (req, res, next) => {
-    const token = req.cookies.token
+    const { token } = req.cookies
     if (!token) {
         throw new UnauthenticatedError("Authenticated first")
     }
