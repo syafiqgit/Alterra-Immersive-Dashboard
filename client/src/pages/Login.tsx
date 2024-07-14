@@ -34,8 +34,8 @@ export default function Login() {
             backgroundImage: `url(${backgroundLogin})`,
           }}
         >
-          <div className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
-            <div>
+          <div className="flex items-center h-full justify-center bg-gray-950 bg-opacity-50">
+            <div className="text-center">
               <h2 className="text-4xl font-bold text-white">
                 Alterra Immersive Dashboard
               </h2>
