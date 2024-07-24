@@ -1,4 +1,5 @@
 export type UserType = {
+    [x: string]: any
     _id: string
     fullname: string
     email: string
@@ -7,5 +8,6 @@ export type UserType = {
     team: string
     status: string
     role: string
-    avatar:string
+    avatar: string
+    createdAt: string
 }
